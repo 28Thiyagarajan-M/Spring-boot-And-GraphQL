@@ -1,0 +1,43 @@
+type Player{
+    id: ID!
+    name: String!
+    age: Int!
+    team: Team!
+    role: String!
+    isOverseas: Boolean!
+    isUncapped: Boolean!
+}
+
+enum Team{
+    CSK,
+    DC,
+    KKR,
+    KXIP,
+    MI,
+    RCB,
+    RR,
+    SRH
+}
+
+type Query{
+    getAllPlayers: [Player]
+    getPlayerById(id: ID!): Player
+}
+
+type Mutation{
+    addPlayer(name: String!, age: Int!, role: String! ,team: Team!, isOverseas:Boolean, isUncapped:Boolean): String
+    savePlayer(player: PlayerInput): String
+    updatePlayer(id: ID!, name: String!, age: Int!, role: String! ,team: Team!, isOverseas:Boolean, isUncapped:Boolean): String
+    deletePlayer(id: ID!): String
+    deleteAllPlayers: String
+}
+
+input PlayerInput{
+    name: String!
+    age: Int!
+    team: Team!
+    role: String!
+    isOverseas: Boolean!
+    isUncapped: Boolean!
+}
+
